@@ -8,6 +8,6 @@ import java.util.*;
 
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long> {
-    public List<Task> findAll();
-    public Task findById(@Param("taskId") Long taskId);
+    List<Task> findAll();
+    Optional<Task> findById(Long taskId);
 }
