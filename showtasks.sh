@@ -12,8 +12,13 @@ end() {
    echo "Work is finished"
 }
 
+webside_open() {
+  echo "Website is opened"
+}
+
 if ./runcrud.sh; then
   open_chrome
+  webside_open
   end
 else
    fail
