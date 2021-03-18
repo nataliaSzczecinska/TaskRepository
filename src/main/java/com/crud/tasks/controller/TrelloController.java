@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.*;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/v1/trello")
 @RequiredArgsConstructor
