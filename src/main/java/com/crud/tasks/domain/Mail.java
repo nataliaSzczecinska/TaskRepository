@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class Mail {
     private final String mailTo;
     private final String subject;
     private final String message;
     private final String toCC;
 
-    private Mail (final String mailTo, final String subject, final String message, final String toCC) {
+    public Mail (final String mailTo, final String subject, final String message, final String toCC) {
         this.mailTo = mailTo;
         this.subject = subject;
         this.message = message;
