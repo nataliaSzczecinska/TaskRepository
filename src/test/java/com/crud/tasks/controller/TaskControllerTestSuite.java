@@ -45,7 +45,7 @@ public class TaskControllerTestSuite {
         when(service.getTask(1L)).thenReturn(Optional.of(task));
 
         //When & Then
-        mockMvc.perform(get("/v1/getTask?taskId=1L").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/task/getTask?taskId=1L").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1L)))
                 .andExpect(jsonPath("$.title", is("Task 1")))
@@ -67,7 +67,7 @@ public class TaskControllerTestSuite {
         when(service.getAllTasks()).thenReturn(tasks);
 
         //When & Then
-        mockMvc.perform(get("/v1/getTasks").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/task/getTasks").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id", is(1)))
@@ -92,7 +92,7 @@ public class TaskControllerTestSuite {
         String jsContent = gson.toJson(taskDto);
 
         //When & Then
-        mockMvc.perform(put("/v1/updateTask")
+        mockMvc.perform(put("/v1/task/updateTask")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .accept("application/json")
@@ -106,7 +106,7 @@ public class TaskControllerTestSuite {
     @Test
     public void deleteTaskTest() throws Exception {
         //When & Then
-        mockMvc.perform(delete("/v1/deleteTask?taskId=1L")
+        mockMvc.perform(delete("/v1/task/deleteTask?taskId=1L")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk());
@@ -127,7 +127,7 @@ public class TaskControllerTestSuite {
         String jsContent = gson.toJson(taskDto);
 
         //When & Then
-        mockMvc.perform(post("/v1/createTask")
+        mockMvc.perform(post("/v1/task/createTask")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsContent))
