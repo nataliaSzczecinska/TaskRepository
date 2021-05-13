@@ -1,6 +1,7 @@
 package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.*;
+import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.facade.TrelloFacade;
 import com.google.gson.Gson;
 import org.hamcrest.Matchers;
@@ -24,8 +25,12 @@ import static org.mockito.Mockito.when;
 class TrelloControllerTest {
     @Autowired
     private MockMvc mockMvc;
+
     @MockBean
     private TrelloFacade trelloFacade;
+
+    @MockBean
+    private TrelloService trelloService;
 
     @Test
     void shouldFetchEmptyTrelloBoards() throws Exception {
@@ -80,7 +85,7 @@ class TrelloControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/trello/createTrelloCard")
+                        .post("/v1/trello/createTrelloCard")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonContent))

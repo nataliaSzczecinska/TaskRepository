@@ -45,9 +45,9 @@ public class TaskControllerTestSuite {
         when(service.getTask(1L)).thenReturn(Optional.of(task));
 
         //When & Then
-        mockMvc.perform(get("/v1/task/getTask?taskId=1L").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/task/getTask?taskId=1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(1L)))
+                .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.title", is("Task 1")))
                 .andExpect(jsonPath("$.content", is("description 1")));
     }
@@ -106,7 +106,7 @@ public class TaskControllerTestSuite {
     @Test
     public void deleteTaskTest() throws Exception {
         //When & Then
-        mockMvc.perform(delete("/v1/task/deleteTask?taskId=1L")
+        mockMvc.perform(delete("/v1/task/deleteTask?taskId=1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk());
