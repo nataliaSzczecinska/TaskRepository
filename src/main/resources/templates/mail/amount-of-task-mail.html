@@ -1,9 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Trello Card</title>
+    <title>Amount of tasks</title>
     <style>
 
         @media only screen and (max-width: 620px) {
@@ -119,12 +128,17 @@
                                             </tbody>
                                         </table>
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-                                            Application functionality:
+                                            Amount of task information:
                                         </p>
-                                        <ul th:each="function : ${application_functionality}">
-                                            <li th:text="${function}"></li>
-                                        </ul>
-                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;" th:text="${goodbye_message}"></p>
+                                        <span th:if="${is_zero_tasks}"><ul th:each="function : ${zero_task_functions}">
+                                             <li th:text="${function}"></li>
+                                         </ul></span>
+                                        <span th:unless="${is_zero_tasks}"><ul th:each="function : ${more_then_zero_task_functions}">
+                                             <li th:text="${function}"></li>
+                                         </ul></span>
+
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"
+                                           th:text="${goodbye_message}"></p>
                                     </td>
                                 </tr>
                             </table>
